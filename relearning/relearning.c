@@ -3,6 +3,8 @@
 #include <time.h>
 #include <stdbool.h>
 #define NUMBER_CHOICES 3
+#define MAX_AGAINST_CHOICES (NUMBER_CHOICES-1)
+
 
 enum Choices{
 	ROCK = 0,
@@ -17,60 +19,24 @@ struct Player {
 	int choice;
 };
 
+struct Player* user = (struct Player[]){ "Angel", 0, 0, -1 };
+struct Player* computer = (struct Player[]){ "Computadora", 0, 0, -1 };
+size_t listTypeSize = sizeof(int);
+
 int* numberChoice();
-void checkGame(struct Player *, struct Player *);
+void checkGame();
+void checkComputerChoices(int*, int*);
 
 int main() {
 	
-	//Assign dynamically memory
-	//We cast malloc generic void response to int*, static size of 1
-	/*
-	int* dato1 = (int*) malloc(sizeof(int));
-
-	//We cast malloc generic void response to int*, dynamic size depending user entry
-	int integers_count = 0, *integers_list = NULL;
-
-	printf_s("Enter size of the list: ");
-	scanf_s("%d", &integers_count);
-	
-	integers_list = (int*) malloc(sizeof(int) * integers_count);
-
-	//Print dynamic memory size reserved
-	printf_s("Array size: %d\n",(int) sizeof(integers_list) * integers_count);
-	for (int listIndex = 0; listIndex < integers_count; listIndex++) {
-		printf_s("Enter integer value: ");
-		scanf_s("%d", &integers_list[listIndex]);
-	}
-	
-	//Print all enter values
-	for (int listIndex = 0; listIndex < integers_count; listIndex++) {
-		printf_s("Integer value: %d\n", integers_list[listIndex]);
-	}
-
-	//Free reserved space in memory
-	free(integers_list);
-	integers_list = NULL;
-	*/
-
 	//Rock, paper, scisor game
 	srand(time(NULL));
 	bool isGameActive = true;
 	int userSelection = 0;
-	struct Player* user = (struct Player *) malloc(sizeof(struct Player));
-	struct Player* computer = (struct Player*) malloc(sizeof(struct Player));
 
-	if (user != NULL) {
-		user->name = "Angel";
-		user->victoryCount = 0;
-		user->loseCount = 0;
-		user->choice = -1;
-	}
-	
-	if (computer != NULL) {
-		computer->name = "Computadora";
-		computer->victoryCount = 0;
-		computer->loseCount = 0;
-		computer->choice = -1;
+	//If something go wrong, exit
+	if (!(user != NULL && computer != NULL)) {
+		exit(EXIT_FAILURE);
 	}
 
 	do {
@@ -98,7 +64,7 @@ int main() {
 				computer->choice = *numberChoice();
 
 				//Check who wins
-				checkGame(user, computer);
+				checkGame();
 				break;
 			};
 			case 2: {
@@ -134,37 +100,49 @@ int* numberChoice() {
 	return &choice;
 }
 
-void checkGame(struct Player *user, struct Player* computer) {
+void checkGame() {
 	//When user selects rock
 	if (user->choice == ROCK + 1) {
-		//Check first the non-winnable options
-		if (computer->choice == ROCK + 1) {
-			printf_s("Tie. No winners");
-			Sleep(1500);
-			return;
-		}
-		if (computer->choice == PAPER + 1) {
-			printf_s("Computer wins!");
-			computer->victoryCount++;
-			user->loseCount++;
-			Sleep(1500);
-			return;
-		}
-
-		printf_s("User wins!");
-		user->victoryCount++;
-		computer->loseCount++;
-		Sleep(1500);
+		checkComputerChoices((int[]) {PAPER}, (int[]) { SCISSORS });
 		return;
 	}
 
 	//When user selects paper
-	if (user->choice == PAPER) {
-
+	if (user->choice == PAPER + 1) {
+		checkComputerChoices((int[]) { SCISSORS }, (int[]) { ROCK });
+		return;
 	}
 
 	//When user selects scissors
-	if (user->choice == SCISSORS) {
-
+	if (user->choice == SCISSORS + 1) {
+		checkComputerChoices((int[]) { ROCK }, (int[]) { PAPER });
+		return;
 	}
+}
+
+void checkComputerChoices(int* weakAgainst, int* strongAgainst) {
+	size_t weakAgainstSize = sizeof(weakAgainst);
+	size_t strongAgainstSize = sizeof(strongAgainst);
+
+	for (int i = 0; i < (weakAgainstSize / listTypeSize) - 1;i++) {
+		if (weakAgainst[i] + 1 == computer->choice + 1) {
+			computer->victoryCount++;
+			user->loseCount++;
+			printf_s("Computer wins!!!");
+			Sleep(1500);
+			return;
+		}
+	}
+	for (int i = 0; i < (strongAgainstSize / listTypeSize) - 1; i++) {
+		if (strongAgainst[i] + 1 == computer->choice + 1) {
+			computer->loseCount++;
+			user->victoryCount++;
+			printf_s("User wins!!!");
+			Sleep(1500);
+			return;
+		}
+	}
+
+	printf_s("Tie");
+	Sleep(1500);
 }
