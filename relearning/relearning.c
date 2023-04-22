@@ -2,12 +2,23 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h>
+#define NUMBER_CHOICES 3
+
+enum Choices{
+	ROCK = 0,
+	PAPER = 1,
+	SCISSORS = 2
+};
 
 struct Player {
 	char* name;
 	int victoryCount;
 	int loseCount;
+	int choice;
 };
+
+int* numberChoice();
+void checkGame(struct Player *, struct Player *);
 
 int main() {
 	
@@ -52,12 +63,14 @@ int main() {
 		user->name = "Angel";
 		user->victoryCount = 0;
 		user->loseCount = 0;
+		user->choice = -1;
 	}
 	
 	if (computer != NULL) {
 		computer->name = "Computadora";
 		computer->victoryCount = 0;
 		computer->loseCount = 0;
+		computer->choice = -1;
 	}
 
 	do {
@@ -67,13 +80,25 @@ int main() {
 		printf_s("1. Start/Keep playing\n");
 		printf_s("2. Show partial score\n");
 		printf_s("3. Exit\n");
-		printf_s("OPCION ELEGIDA: ");
+		printf_s("SELECTED OPTION: ");
 		scanf_s("%d", &userSelection);
 		_flushall();//Clearing buffer
 
 		switch (userSelection){
 			case 1: {
+				//Ask the user to enter an option
+				system("cls");
+				printf_s("Choose one: \n");
+				printf_s("1. Rock\n");
+				printf_s("2. Paper\n");
+				printf_s("3. Scissors\n");
+				printf_s("SELECTED OPTION: "); scanf_s("%d", &user->choice);
 
+				//Generate random computer choice
+				computer->choice = *numberChoice();
+
+				//Check who wins
+				checkGame(user, computer);
 				break;
 			};
 			case 2: {
@@ -101,4 +126,45 @@ int main() {
 	} while (isGameActive);
 
 	return 0;
+}
+
+int* numberChoice() {
+	//Return a choice number between 0 and choice count
+	int choice = (int)(rand() % NUMBER_CHOICES);
+	return &choice;
+}
+
+void checkGame(struct Player *user, struct Player* computer) {
+	//When user selects rock
+	if (user->choice == ROCK + 1) {
+		//Check first the non-winnable options
+		if (computer->choice == ROCK + 1) {
+			printf_s("Tie. No winners");
+			Sleep(1500);
+			return;
+		}
+		if (computer->choice == PAPER + 1) {
+			printf_s("Computer wins!");
+			computer->victoryCount++;
+			user->loseCount++;
+			Sleep(1500);
+			return;
+		}
+
+		printf_s("User wins!");
+		user->victoryCount++;
+		computer->loseCount++;
+		Sleep(1500);
+		return;
+	}
+
+	//When user selects paper
+	if (user->choice == PAPER) {
+
+	}
+
+	//When user selects scissors
+	if (user->choice == SCISSORS) {
+
+	}
 }
