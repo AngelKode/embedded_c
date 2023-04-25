@@ -1,39 +1,11 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <stdbool.h>
-#define NUMBER_CHOICES 3
-#define MAX_AGAINST_CHOICES (NUMBER_CHOICES-1)
-
-
-enum Choices{
-	ROCK = 0,
-	PAPER = 1,
-	SCISSORS = 2
-};
-
-struct Player {
-	char* name;
-	int victoryCount;
-	int loseCount;
-	int choice;
-};
-
-struct Player* user = (struct Player[]){ "Angel", 0, 0, -1 };
-struct Player* computer = (struct Player[]){ "Computadora", 0, 0, -1 };
-size_t listTypeSize = sizeof(int);
-
-int* numberChoice();
-void checkGame();
-void checkComputerChoices(int*, int*);
-
-int main() {
+/*
+main:
 	
+	/*
 	//Rock, paper, scisor game
 	srand(time(NULL));
 	bool isGameActive = true;
 	int userSelection = 0;
-
 	//If something go wrong, exit
 	if (!(user != NULL && computer != NULL)) {
 		exit(EXIT_FAILURE);
@@ -91,9 +63,39 @@ int main() {
 		}
 	} while (isGameActive);
 
-	return 0;
-}
+#include <time.h>
+#include <random>
+#include <windows.h>
+* enum Choices{
+	ROCK = 0,
+	PAPER = 1,
+	SCISSORS = 2
+};
 
+class Player{
+public:
+	char* name;
+	int victoryCount;
+	int loseCount;
+	int choice;
+	Player() {
+		name = NULL;
+		victoryCount = 0;
+		loseCount = 0;
+		choice = -1;
+	}
+};
+
+constexpr int NUMBER_CHOICES = 3;
+constexpr int MAX_AGAINST_CHOICES = (NUMBER_CHOICES - 1);
+
+Player* user =new Player();
+Player* computer = new Player();
+size_t listTypeSize = sizeof(int);
+
+int* numberChoice();
+void checkGame();
+void checkComputerChoices(int*, int*);
 int* numberChoice() {
 	//Return a choice number between 0 and choice count
 	int choice = (int)(rand() % NUMBER_CHOICES);
@@ -103,19 +105,19 @@ int* numberChoice() {
 void checkGame() {
 	//When user selects rock
 	if (user->choice == ROCK + 1) {
-		checkComputerChoices((int[]) {PAPER}, (int[]) { SCISSORS });
+		checkComputerChoices((int*)PAPER, (int*) SCISSORS );
 		return;
 	}
 
 	//When user selects paper
 	if (user->choice == PAPER + 1) {
-		checkComputerChoices((int[]) { SCISSORS }, (int[]) { ROCK });
+		checkComputerChoices((int*)SCISSORS, (int*)ROCK);
 		return;
 	}
 
 	//When user selects scissors
 	if (user->choice == SCISSORS + 1) {
-		checkComputerChoices((int[]) { ROCK }, (int[]) { PAPER });
+		checkComputerChoices((int*)ROCK , (int*)PAPER);
 		return;
 	}
 }
@@ -129,7 +131,7 @@ void checkComputerChoices(int* weakAgainst, int* strongAgainst) {
 			computer->victoryCount++;
 			user->loseCount++;
 			printf_s("Computer wins!!!");
-			Sleep(1500);
+			Sleep(5000);
 			return;
 		}
 	}
@@ -138,11 +140,12 @@ void checkComputerChoices(int* weakAgainst, int* strongAgainst) {
 			computer->loseCount++;
 			user->victoryCount++;
 			printf_s("User wins!!!");
-			Sleep(1500);
+			Sleep(5000);
 			return;
 		}
 	}
 
 	printf_s("Tie");
-	Sleep(1500);
+	Sleep(5000);
 }
+*/
