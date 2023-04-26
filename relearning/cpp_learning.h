@@ -148,6 +148,20 @@ namespace cplusplus {
 		ptrInt = &valueInt;
 
 		std::cout << *ptrInt << std::endl;
+
+		char p_message[] { "asd" };
+	}
+
+	inline void dinamic_memory(void) {
+		int* dinamicPointer{ new int(34) };
+
+		*dinamicPointer = 46;
+
+		std::cout << *dinamicPointer << std::endl;
+
+		//Free heap memory
+		delete dinamicPointer;
+		dinamicPointer = nullptr;
 	}
 }
 
