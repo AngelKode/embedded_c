@@ -138,6 +138,9 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cpp_learning.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\packages\vcpkg.C.ProgramFilesx86.vcpkg.1.0.0\build\native\vcpkg.C.ProgramFilesx86.vcpkg.targets" Condition="Exists('..\packages\vcpkg.C.ProgramFilesx86.vcpkg.1.0.0\build\native\vcpkg.C.ProgramFilesx86.vcpkg.targets')" />
