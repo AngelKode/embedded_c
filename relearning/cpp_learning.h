@@ -163,6 +163,35 @@ namespace cplusplus {
 		delete dinamicPointer;
 		dinamicPointer = nullptr;
 	}
+
+	inline void new_fails(void) {
+		int* ints{ new(std::nothrow) int[1000000000] };
+
+		if (ints == nullptr) {
+			std::cout << "Memory allocation failed" << std::endl;
+			return;
+		}
+
+		std::cout << "Memory allocation succeeded" << std::endl;
+	}
+
+	inline void nullptr_check(void) {
+		int* ptr{new int(45)};
+
+		if (!ptr) {
+			std::cout << "Pointer allocated NOT OK" << std::endl;
+			return;
+		}
+
+		std::cout << "Pointer allocated OK" << std::endl;
+	}
+
+	inline void dinamic_array(void) {
+		int* pIndexes{ new int[20] {} };
+		//Release memory heap
+		delete[] pIndexes;
+		pIndexes = nullptr;
+	}
 }
 
 #endif // !CPP_LEARNING

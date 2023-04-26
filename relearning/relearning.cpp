@@ -9,7 +9,7 @@ using namespace std;
 
 int main() {
 
-	cplusplus::dinamic_memory();
+	cplusplus::nullptr_check();
 
 	/*
 	matrix_examples().print("Matrix:");
