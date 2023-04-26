@@ -9,7 +9,9 @@ using namespace std;
 
 int main() {
 
-	cplusplus::numeric_limits();
+	cplusplus::pointers_ex();
+
+	/*
 	matrix_examples().print("Matrix:");
 	cout << endl << matrix_examples().col(1)(0) << endl;
 
@@ -18,5 +20,6 @@ int main() {
 	row_vectors_examples().print("Rows: ");
 
 	tensor_examples().print("Tensor");
+	*/
 	return 0;
 }

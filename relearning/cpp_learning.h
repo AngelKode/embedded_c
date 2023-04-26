@@ -2,7 +2,6 @@
 #ifndef CPP_LEARNING
 #define CPP_LEARNING
 
-
 #include <iostream>
 
 /*Output formatting*/
@@ -78,6 +77,77 @@ namespace cplusplus {
 					 " to " << std::numeric_limits<int>::max() << std::endl;
 		std::cout << "Limit for unsigned integers is from " << std::numeric_limits<unsigned int>::min() <<
 			" to " << std::numeric_limits<unsigned int>::max() << std::endl;
+	}
+
+	inline void math_functions(void) {
+		//Floor and ceil
+		std::cout << std::floor(20.4) << std::endl;
+		std::cout << std::ceil(20.4) << std::endl;
+
+		//Absolute value
+		std::cout << std::abs(-120) << std::endl;
+		std::cout << std::abs(120) << std::endl;
+
+		//Exponential (e^x)
+		std::cout << std::fixed;
+		std::cout << "e elevate to 23: " << std::exp(23) << std::endl;
+		
+		//Pow
+		std::cout << std::fixed;
+		std::cout << std::setprecision(2);
+		std::cout << "4 ^ 12: " << std::pow(4, 12) << std::endl;
+
+		//Log is reversed of pow operation, 2^3 = 8, Log 8 in base 2 = 3
+		//ask to which exponent we need to elevate base of log to get 8
+		std::cout << "To get 23.12 we need to elevate 2 to: " << std::log2(23.12) << std::endl;
+
+		//Square root
+		std::cout << "The square root of 24.12: " << std::sqrt(24.12) << std::endl;
+	
+		//Round
+		std::cout << "3.5 rounded is: " << std::round(3.4) << std::endl;
+	}
+
+	inline void weird_integral_types(void) {
+		short int v1{ 10 };
+		short int v2{ 20 };
+
+		char v3{ 40 };
+		char v4{ 50 };
+
+		std::cout << "size of v1: " << sizeof(v1) << std::endl;
+		std::cout << "size of v2: " << sizeof(v2) << std::endl;
+		std::cout << "size of v3: " << sizeof(v3) << std::endl;
+		std::cout << "size of v4: " << sizeof(v4) << std::endl;
+
+		auto r1 = v1 + v2;
+		auto r2 = v3 + v4;
+
+		std::cout << "size of r1: " << sizeof(r1) << std::endl;
+		std::cout << "size of r2: " << sizeof(r2) << std::endl;
+	}
+
+	inline void arrays(void) {
+		char message[] = { "Hellow World!" };
+
+		for (auto& c : message) {
+			std::cout << c;
+		}
+		std::cout << std::endl;
+
+		//Or
+	
+		std::cout << message << std::endl;
+		std::cout << "Size of the array: " << std::size(message) << std::endl;
+	}
+
+	inline void pointers_ex(void) {
+		int* ptrInt{ nullptr };
+		int valueInt{23};
+
+		ptrInt = &valueInt;
+
+		std::cout << *ptrInt << std::endl;
 	}
 }
 
