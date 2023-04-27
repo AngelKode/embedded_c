@@ -12,6 +12,9 @@
 #include <limits>
 /*Numeric limits*/
 
+#include <stdbool.h>
+#include <string.h>
+
 namespace cplusplus {
 	inline void manipulate_io(void) {
 		//Add new line
@@ -143,13 +146,38 @@ namespace cplusplus {
 
 	inline void pointers_ex(void) {
 		int* ptrInt{ nullptr };
-		int valueInt{23};
+		int valueInt{ 23 };
 
 		ptrInt = &valueInt;
 
-		std::cout << *ptrInt << std::endl;
+		//std::cout << *ptrInt << std::endl;
 
-		char p_message[] { "asd" };
+		//Const pointers that point to const variables cannot re-assing to another memory location
+		//and can not change tha value of the variable
+		const int value = 2;
+		const int* const ptrIntConst = &value;
+		std::cout << &ptrIntConst << std::endl;
+		//ptrIntConst = &otherValue;//Compiler error
+		//*ptrIntConst = 20;//Compiler error
+
+		//Const Pointers to values can change its value but can not change
+		//the value of the variable that are pointing to.
+		int otherValue = 20;
+		int* const intConst = &otherValue;
+		//*intConst = 23;//ok
+		//intConst = &value;//not ok
+
+		//Pointer to const values can not change its value but can change
+		//the value of the variable that are pointing to.
+		const int* notConsPtr = &otherValue;
+		//*notConsPtr = 20;//not ok
+		//notConsPtr = &otherValue;//ok
+
+		//Pointer to values can change its value and can change
+		//the value of the variable that are pointing to.
+		int* notConstPtr2 = &otherValue;
+		//*notConstPtr2 = 20;//ok
+		//notConstPtr2 = &otherValue;//ok
 	}
 
 	inline void dinamic_memory(void) {
@@ -191,6 +219,50 @@ namespace cplusplus {
 		//Release memory heap
 		delete[] pIndexes;
 		pIndexes = nullptr;
+	}
+
+	inline void string_manipulation(void) {
+		//Lenght of the string
+		const char message[]{ "Today is a sunny day" };
+		std::cout << "Message length: " << std::strlen(message) << std::endl;
+	
+		//Lenght of the string with sizeof takes null character
+		std::cout << "Message length: " << sizeof(message) << std::endl;
+		
+		//Compare strings
+		const char* string1{ "Alabama" };
+		const char* string2{ "Alabama" };
+
+		std::cout << "Strcmp: " << std::strcmp(string1, string2) << std::endl;
+	
+		//Find first occurrence
+		const char* phrase{ "Find P me PLS" };
+		char target = 'P';
+		const char* result = phrase;
+
+
+		result = std::strchr(phrase, target);
+		std::cout << &result << std::endl;
+
+		//Find last ocurrence
+		result = phrase;
+		result = std::strrchr(phrase, target);
+		std::cout << &result << std::endl;
+
+		//Copy
+		char* strDest;
+		const char* strSource{"Im gonna get copied"};
+
+		//Allocate memory for destination
+		//Add 1 por null pointer at the end
+		strDest = (char*) malloc(sizeof(char) * strlen(strSource) + 1);
+
+		//Copy the content to the destination array
+		strcpy_s(strDest, strlen(strSource) + 1, strSource);
+		std::cout << strDest << std::endl;
+
+		//Free memory
+		free(strDest); strDest = nullptr;
 	}
 }
 
