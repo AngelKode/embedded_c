@@ -9,7 +9,7 @@ using namespace std;
 
 int main() {
 
-	cplusplus::arrays();
+	cplusplus::datatypes();
 
 	/*
 	matrix_examples().print("Matrix:");

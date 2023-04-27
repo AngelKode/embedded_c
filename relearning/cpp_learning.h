@@ -12,15 +12,28 @@
 #include <limits>
 /*Numeric limits*/
 
-#include <stdbool.h>
-#include <string.h>
-#include <array>
-#include <vector>
+#include <stdbool.h>//For bool keyword 
+#include <string.h>//For strings
+#include <array>//For arrays
+#include <vector>//For vectors
 
 namespace cplusplus {
+
 	inline void datatypes(void) {
+		std::cout << std::setprecision(64);
 
+		//Integers, float and doubles
+		int integer1 = 20;
+		float pi = 3.14123112312133123213;//Store as 3.1412311, not recomendable, better initialize with maximun 7 precision digits
+		double pi2 = 3.1412311321312312323;//Store more digits than float
 
+		std::cout << integer1 << "\n" <<  pi2 << "\n";
+
+		//MAX, MIN VALUES
+		std::cout << INT_MAX << '\n';//Integer 64-BIT SIGNED
+		std::cout << LONG_MAX << '\n';//Integer 64BIT 
+		std::cout << DBL_MAX << '\n';//Integer
+		std::cout << FLT_MAX << '\n';//Integer
 	}
 
 	inline void manipulate_io(void) {
