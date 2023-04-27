@@ -9,7 +9,7 @@ using namespace std;
 
 int main() {
 
-	cplusplus::pointers_ex();
+	cplusplus::arrays();
 
 	/*
 	matrix_examples().print("Matrix:");

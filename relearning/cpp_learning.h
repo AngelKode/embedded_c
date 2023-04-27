@@ -14,8 +14,15 @@
 
 #include <stdbool.h>
 #include <string.h>
+#include <array>
+#include <vector>
 
 namespace cplusplus {
+	inline void datatypes(void) {
+
+
+	}
+
 	inline void manipulate_io(void) {
 		//Add new line
 		std::cout << "Add new line" << std::endl;
@@ -142,6 +149,32 @@ namespace cplusplus {
 	
 		std::cout << message << std::endl;
 		std::cout << "Size of the array: " << std::size(message) << std::endl;
+
+		//Also use array class
+		std::array<int, 5> my_array = { 1, 2, 3 };
+
+		//And dinamically
+		std::array<int, 5>* my_dinamic_array = new std::array<int, 5>();
+
+		//VECTORS
+		
+		//Intialize a vector
+		std::vector<int> vector1{1,2,3,4};
+
+		//Resize a vector
+		vector1.resize(5);
+
+		//Assign new values and resize it
+		vector1.assign(5,2);
+
+		//Also has internal pointers(iterator)
+		std::vector<int>::iterator it1 = vector1.begin();
+
+		//And loop trough it
+		while ((it1 != vector1.end())) {
+			std::cout << *it1 << "-";
+			it1++;
+		}
 	}
 
 	inline void pointers_ex(void) {
