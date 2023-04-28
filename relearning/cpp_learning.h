@@ -16,7 +16,8 @@
 #include <string.h>//For strings
 #include <array>//For arrays
 #include <vector>//For vectors
-
+#include <unordered_set>
+#include <set>
 namespace cplusplus {
 
 	inline void datatypes(void) {
@@ -34,6 +35,53 @@ namespace cplusplus {
 		std::cout << LONG_MAX << '\n';//Integer 64BIT 
 		std::cout << DBL_MAX << '\n';//Integer
 		std::cout << FLT_MAX << '\n';//Integer
+
+		//Strings
+		
+		//Initialization
+		std::string myName = "John Doe";
+
+		char name_char[] = "Pedro";
+		std::string myName2(name_char);
+
+		//Some Methods
+		myName.at(2);
+		myName.max_size();
+		myName.capacity();
+
+		//Char and Char*
+		char myChar = 'a';
+		char* myDinamicChar = new char('a');
+		//Or
+		char* myDinamicChar2 = &myChar;
+
+		//Maps
+		std::map<string, int> myMap;//Without initial values
+		std::map<string, int> myMapWithValues = { {"john",1}, {"john 2",2}, {"john 4",3} };//With initial values
+
+		//Some methods
+		//Insert, return boolean
+		myMap.insert(std::make_pair("Juan", 12));
+		//Also can use iterators, the following will add all values of myMapWithValues into myMap
+		myMap.insert(myMapWithValues.begin(), myMapWithValues.end());
+
+		//To update an specific key, create a pair with that key and will be replaced
+		myMap.insert(std::make_pair("Juan", 20));//Juan will change to 20
+
+		//Access to keys
+		int valueJuan = myMap["Juan"];
+
+		//Find element by key
+		auto iteratorFinded = myMap.find("Juan");
+		if (iteratorFinded != myMap.end()) {
+			std::cout << iteratorFinded->second << '\n';
+		}
+		else {
+			std::cout << "Not founded:( \n";
+		}
+		
+		//SETS
+		set<int> values = set<int>{ 12,3,1,2 };
 	}
 
 	inline void manipulate_io(void) {
@@ -182,6 +230,9 @@ namespace cplusplus {
 
 		//Also has internal pointers(iterator)
 		std::vector<int>::iterator it1 = vector1.begin();
+
+		//Next, to set iterator in specific position
+		std::vector<int>::iterator iteratorMoved = std::next(vector1.begin(), 3);
 
 		//And loop trough it
 		while ((it1 != vector1.end())) {

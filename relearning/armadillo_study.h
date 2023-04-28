@@ -1,6 +1,6 @@
 #ifndef ARMADILLO_S
 #define ARMADILLO_S
-
+#define ARMA_USE_LAPACK
 #include <armadillo>
 using namespace arma;
 
@@ -13,7 +13,8 @@ namespace armadillo_ex{
 		cx_fmat complexFloatMatrix(10,10);//Mat<cx_float> where cx_float = complex<float>
 		umat unsignedIntegerMatrix(2,3,fill::ones);//Mat<uword> where uword = unsigned int
 		imat signedIntegerMatrix(2,2);//Mat<sword> where sword = signed int
-
+		mat X(5, 5, fill::randu);
+		
 		return complexMatrix;
 	}
 	
