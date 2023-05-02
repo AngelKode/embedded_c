@@ -462,6 +462,31 @@ namespace cplusplus {
 		std::cout << fact(4) << '\n';
 	}
 
+	void pointer_to_func(void (*pointer_to_function)()) {
+		//We can call the function passed
+		pointer_to_function();
+
+		//We can call multiple functions with pointer to function
+		void (*function_pointers[])(void) = {recursion, function_learning};
+
+		for (int pointer = 0; pointer < sizeof(function_pointers) / sizeof(function_pointers[0]); pointer++) {
+			function_pointers[pointer]();//Call function
+		}
+	}
+
+	void pointer_to_pointer() {
+		int value1 = 1;
+		int** head;
+		head = (int **) malloc(sizeof(int));
+
+		if (head != NULL) {
+			*head = &value1;
+			std::cout << head << '\n';
+			std::cout << *head << '\n';
+			std::cout << **head << '\n';
+		}
+	}
+
 }
 
 #endif // !CPP_LEARNING

@@ -9,7 +9,7 @@ using namespace std;
 
 int main() {
 
-	cplusplus::recursion();
+	cplusplus::pointer_to_pointer();
 	/*
 	matrix_examples().print("Matrix:");
 	cout << endl << matrix_examples().col(1)(0) << endl;
