@@ -1,7 +1,6 @@
 #pragma once
 #ifndef CPP_LEARNING
 #define CPP_LEARNING
-
 #include <iostream>
 
 /*Output formatting*/
@@ -13,23 +12,27 @@
 /*Numeric limits*/
 
 #include <stdbool.h>//For bool keyword 
-#include <string.h>//For strings
+#include <string>//For strings
 #include <array>//For arrays
 #include <vector>//For vectors
 #include <unordered_set>
 #include <set>
-namespace cplusplus {
+#include <bitset>
+#include <list>
+#include <queue>
+#include <algorithm>
 
+namespace cplusplus {
 	inline void datatypes(void) {
 		std::cout << std::setprecision(64);
-
+		
 		//Integers, float and doubles
 		int integer1 = 20;
 		float pi = 3.14123112312133123213;//Store as 3.1412311, not recomendable, better initialize with maximun 7 precision digits
 		double pi2 = 3.1412311321312312323;//Store more digits than float
 
 		std::cout << integer1 << "\n" <<  pi2 << "\n";
-
+		
 		//MAX, MIN VALUES
 		std::cout << INT_MAX << '\n';//Integer 64-BIT SIGNED
 		std::cout << LONG_MAX << '\n';//Integer 64BIT 
@@ -45,9 +48,9 @@ namespace cplusplus {
 		std::string myName2(name_char);
 
 		//Some Methods
-		myName.at(2);
-		myName.max_size();
-		myName.capacity();
+		//myName.at(2);
+		//myName.max_size();
+		//myName.capacity();
 
 		//Char and Char*
 		char myChar = 'a';
@@ -56,8 +59,8 @@ namespace cplusplus {
 		char* myDinamicChar2 = &myChar;
 
 		//Maps
-		std::map<string, int> myMap;//Without initial values
-		std::map<string, int> myMapWithValues = { {"john",1}, {"john 2",2}, {"john 4",3} };//With initial values
+		std::map<std::string, int> myMap{};//Without initial values
+		std::map<std::string, int> myMapWithValues = { {"john",1}, {"john 2",2}, {"john 4",3} };//With initial values
 
 		//Some methods
 		//Insert, return boolean
@@ -70,7 +73,7 @@ namespace cplusplus {
 
 		//Access to keys
 		int valueJuan = myMap["Juan"];
-
+		
 		//Find element by key
 		auto iteratorFinded = myMap.find("Juan");
 		if (iteratorFinded != myMap.end()) {
@@ -81,7 +84,38 @@ namespace cplusplus {
 		}
 		
 		//SETS
-		set<int> values = set<int>{ 12,3,1,2 };
+		std::set<int> values = std::set<int>{ 12,3,1,2 };
+
+		//BITS
+		std::bitset<16> bits_16 = 1010101010101010;
+		bits_16[2] = 0;
+		//Set all bits to 0
+		bits_16.reset();
+		//Set specific bit or a range of bits to 1
+		bits_16.set(0);
+		bits_16.set(0,2);
+
+		//List
+		std::list<unsigned int> integer_list;
+
+		//Add elements
+		integer_list.push_back(2);
+		integer_list.push_back(23);
+		integer_list.push_back(22);
+
+		//Sorting list
+		integer_list.sort();
+		
+		//Some methods
+		integer_list.front();//Get the first element
+		integer_list.unique();//Delete repeated elements
+		integer_list.remove(1);//Delete at specific index
+		integer_list.size();//Get the number of elements
+
+		std::cout << "List: \n";
+		for (auto it = integer_list.begin(); it != integer_list.end(); it++) {
+			std::cout << *it << '\n';
+		}
 	}
 
 	inline void manipulate_io(void) {
