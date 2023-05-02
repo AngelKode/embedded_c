@@ -20,7 +20,9 @@
 #include <bitset>
 #include <list>
 #include <queue>
+#include <stack>
 #include <algorithm>
+#include <deque>
 
 namespace cplusplus {
 	inline void datatypes(void) {
@@ -116,6 +118,35 @@ namespace cplusplus {
 		for (auto it = integer_list.begin(); it != integer_list.end(); it++) {
 			std::cout << *it << '\n';
 		}
+
+		//QUEUE(fifo)
+		std::queue<int> integer_queues;
+
+		integer_queues.push(2);
+		integer_queues.push(5);
+		integer_queues.push(3);
+
+		std::cout << "Queue: \n";
+		//Mientras no esté vacío la queue
+		while (!integer_queues.empty()) {
+			std::cout << integer_queues.front() << '\n';
+			integer_queues.pop();//Delete first element
+		}
+
+		//STACK(LIFO)
+		std::stack<int> integer_stack;
+		
+		integer_stack.push(2);
+		integer_stack.push(3);
+		integer_stack.push(4);
+
+		integer_stack.pop();
+
+		//DEQUE
+		std::deque<int> integer_deque(10,0);
+
+		integer_deque.push_back(2);//Add at the end
+		integer_deque.push_front(2);//Add at the start
 	}
 
 	inline void manipulate_io(void) {
