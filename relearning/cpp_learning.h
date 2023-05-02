@@ -527,6 +527,34 @@ namespace cplusplus {
 		}
 	}
 
+	void memory_allocation() {
+		//Dinamic memory allocation on the heap
+		int* myArray = new int[100];
+		//Be carefull to delete the memory used
+		delete[] myArray;
+
+		//Automatic memory allocation on the stack
+		int myArray2[100] = {};
+
+		//Garbage collection
+		struct Class1 {
+		public:
+			void doThis() {
+				std::cout << "Doing something \n";
+			}
+			// Constructor
+			Class1() {}
+
+			// Destructor
+			~Class1() {}
+		};
+
+		std::shared_ptr<Class1> myObject(new Class1());
+		myObject->doThis();
+
+		//If the object is no longer needed, will be deleted automatically
+	}
+
 }
 
 #endif // !CPP_LEARNING
