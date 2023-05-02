@@ -426,6 +426,42 @@ namespace cplusplus {
 		//Free memory
 		free(strDest); strDest = nullptr;
 	}
+
+	void jump_statements() {
+		//break;
+		//continue;
+		//return;
+		//goto;
+	}
+
+	void function_learning() {
+
+		//Function declaration
+		int pow_4(int base, int exponent);
+
+		//Function definition
+		//int pow_4_defined(int base, int exponent) {
+			//Body
+		//}
+
+		//Function overloading
+		int pow_4(int base, int exponent, int type);
+	}
+
+	int fact(int n) {
+		//Base case
+		if (n == 0) {
+			return 1;
+		}
+		//Recursion case
+		return n * fact(n - 1);
+	}
+
+	void recursion() {
+		int n = 5;
+		std::cout << fact(4) << '\n';
+	}
+
 }
 
 #endif // !CPP_LEARNING
