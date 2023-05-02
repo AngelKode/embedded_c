@@ -9,7 +9,7 @@ using namespace std;
 
 int main() {
 
-	cplusplus::pointer_to_pointer();
+	cplusplus::smart_pointers();
 	/*
 	matrix_examples().print("Matrix:");
 	cout << endl << matrix_examples().col(1)(0) << endl;

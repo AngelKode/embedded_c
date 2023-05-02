@@ -23,6 +23,7 @@
 #include <stack>
 #include <algorithm>
 #include <deque>
+#include <memory>
 
 namespace cplusplus {
 	inline void datatypes(void) {
@@ -484,6 +485,45 @@ namespace cplusplus {
 			std::cout << head << '\n';
 			std::cout << *head << '\n';
 			std::cout << **head << '\n';
+		}
+	}
+
+	void smart_pointers() {
+		//Unique pointers
+		std::unique_ptr<int> unique_int_ptr(new int(20));
+		std::cout << unique_int_ptr << '\n';
+		unique_int_ptr.reset(new int(2));//If no parameters, it will set to nullptr
+		std::cout << unique_int_ptr << '\n';
+		delete unique_int_ptr.release();//Free the memory that the unique_ptr was pointing
+		std::cout << unique_int_ptr << '\n';
+
+		//Shared pointers
+		std::shared_ptr<int> shared_int_ptr(new int(20));
+
+		struct A {
+			std::shared_ptr<int> sharedP;
+			A(std::shared_ptr<int> &shared_int_ptr) : sharedP(shared_int_ptr) {}//Using member initializer
+		};
+
+		std::cout << shared_int_ptr.use_count() << '\n';//1 owner
+		struct A a(shared_int_ptr);
+		std::cout << shared_int_ptr.use_count() << '\n';//2 owners
+
+		//Clean shared pointer
+		shared_int_ptr.reset();
+		
+		
+		//Weak pointers
+		//Only to check if some object is not deleted
+		//and connot have owner membership to the object
+		//dereferencing is not allowed
+		std::weak_ptr<int> weak_int_ptr(shared_int_ptr);
+
+		if (weak_int_ptr.expired()) {
+			//Is deleted
+		}
+		else {
+			//Not deleted
 		}
 	}
 
