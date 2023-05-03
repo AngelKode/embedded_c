@@ -25,6 +25,13 @@
 #include <deque>
 #include <memory>
 
+//T is int, double, etc
+//replaced by the compiler
+template <typename T>
+T sum(T num1, T num2) {
+	return num1 + num2;
+}
+
 namespace cplusplus {
 	inline void datatypes(void) {
 		std::cout << std::setprecision(64);
@@ -582,6 +589,12 @@ namespace cplusplus {
 		}();
 
 		std::cout << "Hi lambda: " << n << '\n';
+	}
+	
+	void function_templates() {
+
+		int result = sum<int>(1,2);
+		double result2 = sum<double>(1,2);
 
 	}
 
