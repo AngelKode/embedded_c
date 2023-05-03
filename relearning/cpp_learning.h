@@ -28,7 +28,7 @@
 namespace cplusplus {
 	inline void datatypes(void) {
 		std::cout << std::setprecision(64);
-		
+
 		//Integers, float and doubles
 		int integer1 = 20;
 		float pi = 3.14123112312133123213;//Store as 3.1412311, not recomendable, better initialize with maximun 7 precision digits
@@ -553,6 +553,36 @@ namespace cplusplus {
 		myObject->doThis();
 
 		//If the object is no longer needed, will be deleted automatically
+	}
+
+	void lambda_functions() {
+
+		int n{ 20 };
+
+		//With capture list
+		[&n]()->void {
+			n = 2;
+			std::cout << "Hi lambda: " << n << '\n';
+		}();
+
+		//With parameters
+		[](int data) {
+			std::cout << data << '\n';
+		}(2);
+
+		//With return
+		auto response = [](int num1, int num2)->int {
+			return num1 + num2;
+		}(1,2);
+
+		//Have access outside scope
+		//=,& or * in capture list
+		[&]() {
+			n = 20;
+		}();
+
+		std::cout << "Hi lambda: " << n << '\n';
+
 	}
 
 }
