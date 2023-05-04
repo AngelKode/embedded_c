@@ -27,10 +27,26 @@
 
 //T is int, double, etc
 //replaced by the compiler
-template <typename T>
-T sum(T num1, T num2) {
-	return num1 + num2;
-}
+template <typename T> const T sum(T num1, T num2);
+
+//Template parameters by references
+template <typename T> const T& multiply(T& num1, T& num2);
+
+//Template specialization
+template <const char*>
+const char* multiply<const char*>(const char* a, const char* b) {
+	return (std::strcmp(a, b) > 0) ? a : b;
+};
+
+//Variadic templates
+template <typename... T>
+void sumAll(T... items) {
+	T totalSum = 0;
+	for (auto item : items) {
+		totalSum += item;
+	}
+	return totalSum;
+};
 
 namespace cplusplus {
 	inline void datatypes(void) {
@@ -598,6 +614,14 @@ namespace cplusplus {
 
 	}
 
+}
+
+template <typename T> const T sum(T num1, T num2) {
+	return num1 + num2;
+}
+
+template <typename T> const T& multiply(T& num1, T& num2) {
+	return num1 * num2;
 }
 
 #endif // !CPP_LEARNING
