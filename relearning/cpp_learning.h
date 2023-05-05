@@ -24,6 +24,8 @@
 #include <algorithm>
 #include <deque>
 #include <memory>
+#include <concepts>
+#include <type_traits>
 
 //T is int, double, etc
 //replaced by the compiler
@@ -31,12 +33,6 @@ template <typename T> const T sum(T num1, T num2);
 
 //Template parameters by references
 template <typename T> const T& multiply(T& num1, T& num2);
-
-//Template specialization
-template <const char*>
-const char* multiply<const char*>(const char* a, const char* b) {
-	return (std::strcmp(a, b) > 0) ? a : b;
-};
 
 //Variadic templates
 template <typename... T>
@@ -46,6 +42,24 @@ void sumAll(T... items) {
 		totalSum += item;
 	}
 	return totalSum;
+};
+
+//Template specialization
+template<typename T>
+struct CompileTimeError {
+	// ...
+};
+
+template<>
+struct CompileTimeError<int*> {
+};
+
+template<>
+struct CompileTimeError<int&> {
+};
+
+template<>
+struct CompileTimeError<int> {
 };
 
 namespace cplusplus {
@@ -58,7 +72,7 @@ namespace cplusplus {
 		double pi2 = 3.1412311321312312323;//Store more digits than float
 
 		std::cout << integer1 << "\n" <<  pi2 << "\n";
-		
+
 		//MAX, MIN VALUES
 		std::cout << INT_MAX << '\n';//Integer 64-BIT SIGNED
 		std::cout << LONG_MAX << '\n';//Integer 64BIT 
@@ -608,12 +622,37 @@ namespace cplusplus {
 	}
 	
 	void function_templates() {
-
+		
 		int result = sum<int>(1,2);
 		double result2 = sum<double>(1,2);
 
+		try{
+			CompileTimeError<int> cte;//This is OK
+			CompileTimeError < std::string > cteBad;//This will generate an error
+			std::cout << &cteBad << std::endl;
+		}
+		catch (const std::exception& e){
+			std::cout << e.what() << std::endl;
+		}
+		
+
 	}
 
+	void static_functions() {
+		//The first parameters it gets validated,
+		//if is not true, the second string paremeter get print at the console
+		static_assert(24 > 2, "Is not true");
+
+		//We can cast from different types of numbers
+		//but we cannot cast strings to int and visceversa
+		//and we c
+		int number{ 20 };
+		double number2{ 20.12 };
+
+		int numberCasted = static_cast<int>(number2);
+		std::cout << numberCasted << std::endl;
+	}
+	
 }
 
 template <typename T> const T sum(T num1, T num2) {
