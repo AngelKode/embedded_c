@@ -26,7 +26,7 @@
 #include <memory>
 #include <concepts>
 #include <type_traits>
-
+#include "Classes.h"
 //T is int, double, etc
 //replaced by the compiler
 template <typename T> const T sum(T num1, T num2);
@@ -651,6 +651,20 @@ namespace cplusplus {
 
 		int numberCasted = static_cast<int>(number2);
 		std::cout << numberCasted << std::endl;
+	}
+
+	void using_classes(void) {
+		Dog* dog1 = new Dog("Ajk","pitbull",2);
+		dog1->eat();
+
+		//Or
+		Dog dog2("Hunter","labrador",2);
+
+		//Free space
+		delete dog1;
+
+		//Or using shared pointer to automatically free space
+		std::shared_ptr<Dog> myDogPtr(new Dog("Liro","chihuaha",1));
 	}
 	
 }
