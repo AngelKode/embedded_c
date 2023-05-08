@@ -27,13 +27,14 @@
 #include <concepts>
 #include <type_traits>
 #include "Classes.h"
+#include <stdarg.h>
+#include <map>
 //T is int, double, etc
 //replaced by the compiler
 template <typename T> const T sum(T num1, T num2);
 
 //Template parameters by references
 template <typename T> const T& multiply(T& num1, T& num2);
-
 //Variadic templates
 template <typename... T>
 void sumAll(T... items) {
@@ -64,6 +65,7 @@ struct CompileTimeError<int> {
 
 //Generic template
 template<typename T>
+requires std::integral<T>
 class Vector {
 	public:
 		void push_back(T item){}
@@ -228,26 +230,26 @@ namespace cplusplus {
 		
 		//Set boolalpha
 		std::cout << std::boolalpha; 
-		std::cout << true << endl;
+		std::cout << true << std::endl;
 		std::cout << std::noboolalpha;
-		std::cout << true << endl;
+		std::cout << true << std::endl;
 
 		//Show +/- sign
 		std::cout << std::showpos;
-		std::cout << -45 << endl;
+		std::cout << -45 << std::endl;
 		std::cout << std::noshowpos;
-		std::cout << -45 << endl;
+		std::cout << -45 << std::endl;
 
 		//Show in different number systems
-		std::cout << std::dec << 12 << endl;
-		std::cout << std::hex << 12 << endl;
-		std::cout << std::oct << 12 << endl;
+		std::cout << std::dec << 12 << std::endl;
+		std::cout << std::hex << 12 << std::endl;
+		std::cout << std::oct << 12 << std::endl;
 
 		//Show base (only integrals)
 		std::cout << std::showbase;
-		std::cout << std::dec << 12 << endl;
-		std::cout << std::hex << 12 << endl;
-		std::cout << std::oct << 12 << endl;
+		std::cout << std::dec << 12 << std::endl;
+		std::cout << std::hex << 12 << std::endl;
+		std::cout << std::oct << 12 << std::endl;
 		
 		//UPPERCASE & LOWERCASE
 		std::cout << std::nouppercase;
@@ -684,6 +686,8 @@ namespace cplusplus {
 
 		//Or using shared pointer to automatically free space
 		std::shared_ptr<Dog> myDogPtr(new Dog("Liro","chihuaha",1));
+
+		std::cout << dog2;
 	}
 	
 }

@@ -1,16 +1,14 @@
 #include <stdbool.h>
 #include <iostream>
-#include "armadillo_study.h"
+//#include "armadillo_study.h"
 #include "cpp_learning.h"
 #include <string_view>
-
-using namespace armadillo_ex;
+//using namespace armadillo_ex;
 using namespace std;
 
 
 int main() {
-
-	cplusplus::function_templates();	
+	cplusplus::using_classes();
 	/*
 	matrix_examples().print("Matrix:");
 	cout << endl << matrix_examples().col(1)(0) << endl;

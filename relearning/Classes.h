@@ -41,13 +41,20 @@ class Animal {
 };
 
 class Dog : public Animal {
+	private:
+		int x;
 	public:
 		void bark() {
 			std::cout << "Barking \n";
 		}
 		Dog(std::string name, std::string raze, int age) : Animal(name, raze, age){
+			x = 2;
 		}
 		~Dog() {};
+		friend std::ostream& operator<<(std::ostream& os, const Dog& other){
+			os << "Probando " << &other.x << '\n';
+			return os;
+		}
 };
 
 #endif //CLASSES
