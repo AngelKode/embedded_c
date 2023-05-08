@@ -2,6 +2,7 @@
 #include <iostream>
 #include "armadillo_study.h"
 #include "cpp_learning.h"
+#include <string_view>
 
 using namespace armadillo_ex;
 using namespace std;
@@ -9,7 +10,7 @@ using namespace std;
 
 int main() {
 
-	cplusplus::function_templates();
+	cplusplus::function_templates();	
 	/*
 	matrix_examples().print("Matrix:");
 	cout << endl << matrix_examples().col(1)(0) << endl;

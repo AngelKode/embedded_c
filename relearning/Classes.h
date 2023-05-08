@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <string>
+#include <string_view>
 
 class Animal {
 	private:
@@ -13,7 +14,7 @@ class Animal {
 		int age;
 	public:
 		Animal() = default;
-		
+
 		Animal(std::string name, std::string raze, int age) {
 			this->name = name;
 			this->raze = raze;

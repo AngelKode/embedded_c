@@ -32,5 +32,8 @@
     <ClInclude Include="cpp_learning.h">
       <Filter>Archivos de origen</Filter>
     </ClInclude>
+    <ClInclude Include="Classes.h">
+      <Filter>Archivos de origen</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

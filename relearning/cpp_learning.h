@@ -62,6 +62,25 @@ template<>
 struct CompileTimeError<int> {
 };
 
+//Generic template
+template<typename T>
+class Vector {
+	public:
+		void push_back(T item){}
+		int size() {}
+		T at(int index) {}
+};
+
+//Template specialized
+template<>
+class Vector<int64_t>{
+	public:
+		void push_back(int64_t item) {}
+		int size() {}
+		int64_t at(int index) {}
+};
+
+
 namespace cplusplus {
 	inline void datatypes(void) {
 		std::cout << std::setprecision(64);
@@ -635,7 +654,7 @@ namespace cplusplus {
 			std::cout << e.what() << std::endl;
 		}
 		
-
+		Vector<int64_t>* myVector = new Vector<int64_t>();
 	}
 
 	void static_functions() {
