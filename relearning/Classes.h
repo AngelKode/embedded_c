@@ -47,10 +47,10 @@ class Dog : public Animal {
 		void bark() {
 			std::cout << "Barking \n";
 		}
-		Dog(std::string name, std::string raze, int age) : Animal(name, raze, age){
-			x = 2;
-		}
+		Dog(std::string name, std::string raze, int age) : Animal(name, raze, age){}
+
 		~Dog() {};
+
 		friend std::ostream& operator<<(std::ostream& os, const Dog& other){
 			os << "Probando " << &other.x << '\n';
 			return os;
