@@ -65,5 +65,33 @@ void casting_data() {
 	}
 }
 
+void eliminate_duplicates_array(int numbers[], unsigned int collection_size) {
+	bool isRepeated{ false };
+	int uniqueNums[20]{};
+	int totalUniques{ 0 };
+
+	for (unsigned int i = 0; i < collection_size; i++) {
+		isRepeated = false;
+		for (int iUN = 0; iUN < totalUniques; iUN++) {
+			std::cout << uniqueNums[iUN] << '\n';
+			std::cout << numbers[i] << '\n';
+			if (uniqueNums[iUN] == numbers[i]) {
+				isRepeated = true;
+				break;
+			}
+		}
+
+		if (!isRepeated) {
+			uniqueNums[totalUniques] = numbers[i];
+			totalUniques++;
+		}
+	}
+
+	std::cout << "The collection contains " << totalUniques << " unique numbers, they are : ";
+	for (auto cont = 0; cont < totalUniques; cont++) {
+		std::cout << uniqueNums[cont] << " ";
+	}
+}
+
 #endif // !INITIAL_EXAMPLES
 
