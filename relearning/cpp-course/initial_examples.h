@@ -69,12 +69,10 @@ void eliminate_duplicates_array(int numbers[], unsigned int collection_size) {
 	bool isRepeated{ false };
 	int uniqueNums[20]{};
 	int totalUniques{ 0 };
-
+	
 	for (unsigned int i = 0; i < collection_size; i++) {
 		isRepeated = false;
 		for (int iUN = 0; iUN < totalUniques; iUN++) {
-			std::cout << uniqueNums[iUN] << '\n';
-			std::cout << numbers[i] << '\n';
 			if (uniqueNums[iUN] == numbers[i]) {
 				isRepeated = true;
 				break;
@@ -92,6 +90,23 @@ void eliminate_duplicates_array(int numbers[], unsigned int collection_size) {
 		std::cout << uniqueNums[cont] << " ";
 	}
 }
+
+void pointers() {
+	int myInt = 20;
+	int* ptrInt{ &myInt };
+
+	const char* myPhrase = "asdsdsa";
+	const char* myPhrase[] = { "asdsa" , "asdsa"};
+
+	int* const constPtr{ &myInt };//const ptr
+	const int* constVar{ &myInt };//const var
+
+	int numbers[] = { 1,2,3,4 };
+	int* ptrNumbers{ numbers };//array decay in pointer, loses some information
+}
+
+
+
 
 #endif // !INITIAL_EXAMPLES
 
