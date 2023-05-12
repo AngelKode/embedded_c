@@ -1,11 +1,11 @@
 // "Copyright 2023 <Copyright AngelKode>"
 // #include <stdbool.h>
 // #include <iostream>
-// #include "armadillo_study.h"
+// #include "headers/armadillo_study.h"
 // #include "cpp_learning.h"
 // #include <string_view>
 // using namespace armadillo_ex;
-#include "cpp-course/initial_examples.h"
+#include "../cpp-course/headers/initial_examples.h"
 // using namespace std;
 
 
