@@ -1,4 +1,4 @@
-// "Copyright 2023 <Copyright AngelKode>"
+// Copyright 2023 <Copyright AngelKode>
 // #include <stdbool.h>
 // #include <iostream>
 // #include "headers/armadillo_study.h"

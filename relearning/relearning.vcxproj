@@ -139,17 +139,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="armadillo_study.h" />
-    <ClCompile Include="relearning.cpp" />
-    <ClCompile Include="RockPaperScissors.cpp" />
+    <ClCompile Include="headers\armadillo_study.h" />
+    <ClCompile Include="src\relearning.cpp" />
+    <ClCompile Include="src\RockPaperScissors.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Classes.h" />
-    <ClInclude Include="cpp-course\initial_examples.h" />
-    <ClInclude Include="cpp_learning.h" />
+    <ClInclude Include="headers\Classes.h" />
+    <ClInclude Include="cpp-course\headers\initial_examples.h" />
+    <ClInclude Include="headers\cpp_learning.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
