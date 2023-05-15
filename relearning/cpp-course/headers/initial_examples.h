@@ -226,6 +226,7 @@ class Derived : public Base {
 		originalString.copy(copiedFromString, 7, 8);
 		copiedFromString[6] = '\0';  // Add null terminator
 		std::cout << copiedFromString << '\n';
+		delete copiedFromString;//Free space
 		// now using std::string when copy from std::string to another std:string
 		std::string copiedFromString_String;
 		const int sizeOfCopy = 11;
@@ -239,6 +240,29 @@ class Derived : public Base {
 		// swapping between strings
 		copiedFromString_String.swap(myString);
 		std::cout << copiedFromString_String << '\n';  // will contain Hi......
+
+		//Find in a std::string
+		std::string stringSearch{ "My coffee is cold" };
+		std::string stringSearching{ "mountain" };
+		size_t posFounded = stringSearch.find(stringSearching);
+
+		if (posFounded != std::string::npos) {
+			std::cout << "Founded at " << posFounded << '\n';
+		}
+		else {
+			std::cout << "Not founded" << '\n';
+		}
+
+		stringSearching = "o";
+		posFounded = stringSearch.find_last_of(stringSearching);
+
+		if (posFounded != std::string::npos) {
+			std::cout << "Founded at " << posFounded << " " << stringSearch[posFounded] << '\n';
+		}
+		else {
+			std::cout << "Not founded" << '\n';
+		}
+
     }
 }  // namespace cpp_course
 
