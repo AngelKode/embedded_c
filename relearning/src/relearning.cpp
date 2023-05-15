@@ -10,7 +10,7 @@
 
 
 int main() {
-    cpp_course::characters_and_strings();
+	cpp_course::numbers();
     // cplusplus::using_classes();
 	/*
 	matrix_examples().print("Matrix:");

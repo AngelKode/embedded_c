@@ -270,7 +270,7 @@ class Derived : public Base {
 		try {
 			int castedToNumber{ std::stoi("2sadblw") };  // if has at the beginning some numbers, it will stop until numbers finded
 			int castedToNumberOK{ std::stoi("12sdsaka") };  // it will store 12
-			unsigned long castedToNumberOK2{ std::stoul("32.123") };  // it will store a positive number if negative and only the number before .
+			uint64_t castedToNumberOK2{ std::stoul("32.123") };  // it will store a positive number if negative and only the number before .
 			std::cout << castedToNumberOK2 << '\n';
 		} catch (const std::invalid_argument& exception) {
 			std::cout << "Invalid argument: " << exception.what() << '\n';
