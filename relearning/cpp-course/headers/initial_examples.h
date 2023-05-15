@@ -276,7 +276,27 @@ class Derived : public Base {
 			std::cout << "Invalid argument: " << exception.what() << '\n';
 		}
 		
+		//Raw string literals
+		std::string myLiteral{R"(Hi \t you
+)"};
+		std::cout << myLiteral;
 
+		// Copying strings
+		std::string stringOne{ "Im string one" };
+		std::string& stringTwo{ stringOne };
+
+		const char* ptr1 = stringOne.data();
+		const char* ptr2 = stringTwo.data();
+		std::cout << (void*)ptr2 << " -- " << (void*)ptr1 << '\n';
+
+		// string_view
+		std::string_view myStringView{ stringOne };
+		myStringView.remove_prefix(3); // will remove 'Im ';
+		myStringView.remove_suffix(4); // will remove ' one';
+		// changes only on the view
+
+		std::cout << std::strlen(myStringView.data()) << '\n';  // will contain bad data bc removing methods
+		std::cout << myStringView << '\n';
     }
 }  // namespace cpp_course
 
