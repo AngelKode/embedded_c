@@ -130,7 +130,7 @@ class Derived : public Base {
 		char itsBlank{ ' ' };
 		std::cout << "a is blank?: " << std::isblank(notBlank) << '\n';  // returns 0 if not
 		std::cout << "  is blank?: " << std::isblank(itsBlank) << '\n';
-
+			
 		// If a character is lower/upper case
 		char charLower{ 'a' };
 		char charUpper{ 'A' };
@@ -251,8 +251,9 @@ class Derived : public Base {
 		} else {
 			std::cout << "Not founded" << '\n';
 		}
-
+		
 		stringSearching = "o";
+
 		posFounded = stringSearch.find_last_of(stringSearching);
 
 		if (posFounded != std::string::npos) {
@@ -260,6 +261,22 @@ class Derived : public Base {
 		} else {
 			std::cout << "Not founded" << '\n';
 		}
+
+		// std::string to numbers and visceversa
+		// 2 can be int, double, etc
+		std::string castedString{ std::to_string(2) };
+
+		// If the string to be casted into a number is bad, an exception is thrown
+		try {
+			int castedToNumber{ std::stoi("2sadblw") };  // if has at the beginning some numbers, it will stop until numbers finded
+			int castedToNumberOK{ std::stoi("12sdsaka") };  // it will store 12
+			unsigned long castedToNumberOK2{ std::stoul("32.123") };  // it will store a positive number if negative and only the number before .
+			std::cout << castedToNumberOK2 << '\n';
+		} catch (const std::invalid_argument& exception) {
+			std::cout << "Invalid argument: " << exception.what() << '\n';
+		}
+		
+
     }
 }  // namespace cpp_course
 
