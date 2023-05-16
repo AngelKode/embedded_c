@@ -298,6 +298,22 @@ class Derived : public Base {
 		std::cout << std::strlen(myStringView.data()) << '\n';  // will contain bad data bc removing methods
 		std::cout << myStringView << '\n';
     }
+
+	bool is_number_palindrome(uint64_t number) {
+		uint64_t number_reversed{ 0 };
+		uint64_t auxNumber{ 0 };
+		uint32_t digitCounter{ 1 };
+		uint64_t initial_number{ number };
+		size_t numberSize{ std::to_string(number).length() };
+		while (number != 0) {
+			auxNumber = number % 10;
+			number /= 10;
+			number_reversed += auxNumber * static_cast<uint64_t>(pow(10, numberSize - digitCounter));
+			digitCounter++;
+		}
+		std::cout << initial_number << "--" << number_reversed << '\n';
+		return initial_number == number_reversed;
+	}
 }  // namespace cpp_course
 
 #endif  // !INITIAL_EXAMPLES

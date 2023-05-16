@@ -9,9 +9,8 @@
 // using namespace std;
 
 
-int main() {
-	cpp_course::numbers();
-    // cplusplus::using_classes();
+int main(int argc, char** argv) {
+	cpp_course::is_number_palindrome(1234321);
 	/*
 	matrix_examples().print("Matrix:");
 	cout << endl << matrix_examples().col(1)(0) << endl;
