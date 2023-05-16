@@ -286,7 +286,9 @@ class Derived : public Base {
 
 		const char* ptr1 = stringOne.data();
 		const char* ptr2 = stringTwo.data();
-		std::cout << (void*)ptr2 << " -- " << (void*)ptr1 << '\n';
+		std::cout << reinterpret_cast<void*>(const_cast<char*>(ptr2));  // using const_cast to remove the const
+		std::cout << " -- ";
+		std::cout << reinterpret_cast<void*>(const_cast<char*>(ptr1)) << '\n';  // using const_cast to remove the const
 
 		// string_view
 		std::string_view myStringView{ stringOne };
