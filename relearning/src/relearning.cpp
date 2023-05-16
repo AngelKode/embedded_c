@@ -9,7 +9,7 @@
 // using namespace std;
 
 
-int main(int argc, char** argv) {
+int main(int argc, char** argv) {  // char** argv equals to char* argv[]
 	cpp_course::is_number_palindrome(1234321);
 	/*
 	matrix_examples().print("Matrix:");

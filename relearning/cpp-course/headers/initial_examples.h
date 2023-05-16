@@ -130,7 +130,6 @@ class Derived : public Base {
 		char itsBlank{ ' ' };
 		std::cout << "a is blank?: " << std::isblank(notBlank) << '\n';  // returns 0 if not
 		std::cout << "  is blank?: " << std::isblank(itsBlank) << '\n';
-			
 		// If a character is lower/upper case
 		char charLower{ 'a' };
 		char charUpper{ 'A' };
@@ -276,7 +275,7 @@ class Derived : public Base {
 			std::cout << "Invalid argument: " << exception.what() << '\n';
 		}
 		
-		//Raw string literals
+		// Raw string literals
 		std::string myLiteral{R"(Hi \t you
 )"};
 		std::cout << myLiteral;
@@ -291,8 +290,8 @@ class Derived : public Base {
 
 		// string_view
 		std::string_view myStringView{ stringOne };
-		myStringView.remove_prefix(3); // will remove 'Im ';
-		myStringView.remove_suffix(4); // will remove ' one';
+		myStringView.remove_prefix(3);  // will remove 'Im ';
+		myStringView.remove_suffix(4);  // will remove ' one';
 		// changes only on the view
 
 		std::cout << std::strlen(myStringView.data()) << '\n';  // will contain bad data bc removing methods
@@ -314,6 +313,8 @@ class Derived : public Base {
 		std::cout << initial_number << "--" << number_reversed << '\n';
 		return initial_number == number_reversed;
 	}
+
+
 }  // namespace cpp_course
 
 #endif  // !INITIAL_EXAMPLES
