@@ -7,6 +7,7 @@
 #include <cctype>
 #include <cstring>
 #include <string>
+#include <optional>
 
 namespace cpp_course {
 class Base {
@@ -314,6 +315,14 @@ class Derived : public Base {
 		}
 		std::cout << initial_number << "--" << number_reversed << '\n';
 		return initial_number == number_reversed;
+	}
+
+	std::optional<uint64_t> optionalFunction(uint64_t dividend, uint64_t divisor) {
+		if (divisor == 0) {
+			return std::nullopt;
+		}
+
+		return dividend / divisor;
 	}
 
 

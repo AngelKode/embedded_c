@@ -10,7 +10,14 @@
 
 
 int main(int argc, char** argv) {  // char** argv equals to char* argv[]
-	cpp_course::is_number_palindrome(1234321);
+	auto result = cpp_course::optionalFunction(2, 0);
+
+	if (!result.has_value()) {
+		std::cout << "The divisor is 0, cant do division\n";
+		return -1;
+	}
+
+	std::cout << "The result is: " << result.value() << '\n';
 	/*
 	matrix_examples().print("Matrix:");
 	cout << endl << matrix_examples().col(1)(0) << endl;
