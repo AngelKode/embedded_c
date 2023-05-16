@@ -13,6 +13,10 @@ namespace cpp_course {
 class Base {
 	public:
 	virtual void foo() = 0;
+
+	Base() = default;
+
+	bool operator==(const Base& other) const = default;
 };
 
 class Derived : public Base {
@@ -20,6 +24,10 @@ class Derived : public Base {
 	void foo() override {
 		std::cout << "Derived::foo()" << std::endl;
 	}
+
+	Derived() = default;
+
+	bool operator==(const Derived& other) const = default;
 };
 
 	void celsius_to_fahrenheit() {
