@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\vcpkg.C.ProgramFilesx86.vcpkg.1.0.0\build\native\vcpkg.C.ProgramFilesx86.vcpkg.props" Condition="Exists('..\packages\vcpkg.C.ProgramFilesx86.vcpkg.1.0.0\build\native\vcpkg.C.ProgramFilesx86.vcpkg.props')" />
   <ItemGroup Label="ProjectConfigurations">
@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cpp-course\headers\initial_examples.cpp" />
     <ClCompile Include="headers\armadillo_study.h" />
     <ClCompile Include="src\relearning.cpp" />
     <ClCompile Include="src\RockPaperScissors.cpp" />

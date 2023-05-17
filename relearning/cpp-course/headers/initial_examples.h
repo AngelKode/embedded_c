@@ -30,6 +30,27 @@ namespace cpp_course {
 		bool operator==(const Derived& other) const = default;
 	};
 
+	class Cylinder {
+	private:
+		uint64_t height, volume;
+	public:
+		Cylinder() {
+			this->height = 0;
+			this->volume = 0;
+		}
+
+		// Using initializer list
+		// use explicit to avoid implicit conversion
+		explicit Cylinder(const uint64_t& height, const uint64_t& volume) : height(height), volume(volume) {
+			// The same as
+			// this->height = height etc...
+		}
+
+		bool operator==(const Cylinder& other) const {
+			return this->height == other.height && this->volume == other.volume;
+		}
+	};
+
 	void celsius_to_fahrenheit() {
 		float celsiusIn{};
 		float fahrenheitOut{};
