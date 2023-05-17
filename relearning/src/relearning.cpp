@@ -8,16 +8,19 @@
 #include "../cpp-course/headers/initial_examples.h"
 // using namespace std;
 
-
 int main(int argc, char** argv) {  // char** argv equals to char* argv[]
-	auto result = cpp_course::optionalFunction(2, 0);
+	//auto result = cpp_course::optionalFunction(2, 0);
 
-	if (!result.has_value()) {
-		std::cout << "The divisor is 0, cant do division\n";
-		return -1;
-	}
+	//if (!result.has_value()) {
+	//	std::cout << "The divisor is 0, cant do division\n";
+	//	return -1;
+	//}
 
-	std::cout << "The result is: " << result.value() << '\n';
+	//std::cout << "The result is: " << result.value() << '\n';
+
+	cpp_course::static_variables();
+	cpp_course::static_variables();
+	cpp_course::static_variables();
 	/*
 	matrix_examples().print("Matrix:");
 	cout << endl << matrix_examples().col(1)(0) << endl;
@@ -28,5 +31,5 @@ int main(int argc, char** argv) {  // char** argv equals to char* argv[]
 
 	tensor_examples().print("Tensor");
 	*/
-    return 0;
+	return 0;
 }

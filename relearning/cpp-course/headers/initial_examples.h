@@ -10,25 +10,25 @@
 #include <optional>
 
 namespace cpp_course {
-class Base {
+	class Base {
 	public:
-	virtual void foo() = 0;
+		virtual void foo() = 0;
 
-	Base() = default;
+		Base() = default;
 
-	bool operator==(const Base& other) const = default;
-};
+		bool operator==(const Base& other) const = default;
+	};
 
-class Derived : public Base {
+	class Derived : public Base {
 	public:
-	void foo() override {
-		std::cout << "Derived::foo()" << std::endl;
-	}
+		void foo() override {
+			std::cout << "Derived::foo()" << std::endl;
+		}
 
-	Derived() = default;
+		Derived() = default;
 
-	bool operator==(const Derived& other) const = default;
-};
+		bool operator==(const Derived& other) const = default;
+	};
 
 	void celsius_to_fahrenheit() {
 		float celsiusIn{};
@@ -38,7 +38,7 @@ class Derived : public Base {
 		std::cin >> celsiusIn;
 
 		fahrenheitOut = (static_cast<float>(9.0) / static_cast<float>(5))
-						* celsiusIn + 32;
+			* celsiusIn + 32;
 		std::cout << celsiusIn << " Celsius is " << fahrenheitOut << " Fahrenheit\n";
 	}
 
@@ -256,17 +256,19 @@ class Derived : public Base {
 
 		if (posFounded != std::string::npos) {
 			std::cout << "Founded at " << posFounded << '\n';
-		} else {
+		}
+		else {
 			std::cout << "Not founded" << '\n';
 		}
-		
+
 		stringSearching = "o";
 
 		posFounded = stringSearch.find_last_of(stringSearching);
 
 		if (posFounded != std::string::npos) {
 			std::cout << "Founded at " << posFounded << " " << stringSearch[posFounded] << '\n';
-		} else {
+		}
+		else {
 			std::cout << "Not founded" << '\n';
 		}
 
@@ -280,10 +282,11 @@ class Derived : public Base {
 			int castedToNumberOK{ std::stoi("12sdsaka") };  // it will store 12
 			uint64_t castedToNumberOK2{ std::stoul("32.123") };  // it will store a positive number if negative and only the number before .
 			std::cout << castedToNumberOK2 << '\n';
-		} catch (const std::invalid_argument& exception) {
+		}
+		catch (const std::invalid_argument& exception) {
 			std::cout << "Invalid argument: " << exception.what() << '\n';
 		}
-		
+
 		// Raw string literals
 		std::string myLiteral{R"(Hi \t you
 )"};
@@ -307,7 +310,7 @@ class Derived : public Base {
 
 		std::cout << std::strlen(myStringView.data()) << '\n';  // will contain bad data bc removing methods
 		std::cout << myStringView << '\n';
-    }
+	}
 
 	bool is_number_palindrome(uint64_t number) {
 		uint64_t number_reversed{ 0 };
@@ -333,8 +336,13 @@ class Derived : public Base {
 		return dividend / divisor;
 	}
 
-
+	void static_variables() {
+		// The static variable dont get deleted after getting out of scope
+		// every time we call this function, the variable myCount get added 1: 1,2,3,etc
+		static uint64_t myCount {0};
+		myCount++;
+		std::cout << myCount << '\n';
+	}
 }  // namespace cpp_course
 
 #endif  // !INITIAL_EXAMPLES
-
