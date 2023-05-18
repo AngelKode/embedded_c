@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="cpp-course\headers\initial_examples.cpp" />
+    <ClCompile Include="cpp-course\graphs\Graph.cpp" />
     <ClCompile Include="headers\armadillo_study.h" />
     <ClCompile Include="src\relearning.cpp" />
     <ClCompile Include="src\RockPaperScissors.cpp" />
@@ -148,6 +149,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cpp-course\graphs\Graph.h" />
     <ClInclude Include="headers\Classes.h" />
     <ClInclude Include="cpp-course\headers\initial_examples.h" />
     <ClInclude Include="headers\cpp_learning.h" />

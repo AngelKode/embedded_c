@@ -6,6 +6,7 @@
 // #include <string_view>
 // using namespace armadillo_ex;
 #include "../cpp-course/headers/initial_examples.h"
+#include "../cpp-course/graphs/Graph.h"
 // using namespace std;
 
 int main(int argc, char** argv) {  // char** argv equals to char* argv[]
@@ -18,9 +19,9 @@ int main(int argc, char** argv) {  // char** argv equals to char* argv[]
 
 	//std::cout << "The result is: " << result.value() << '\n';
 
-	cpp_course::static_variables();
-	cpp_course::static_variables();
-	cpp_course::static_variables();
+	//cpp_course::static_variables();
+	//cpp_course::static_variables();
+	//cpp_course::static_variables();
 	/*
 	matrix_examples().print("Matrix:");
 	cout << endl << matrix_examples().col(1)(0) << endl;
@@ -31,5 +32,16 @@ int main(int argc, char** argv) {  // char** argv equals to char* argv[]
 
 	tensor_examples().print("Tensor");
 	*/
+
+	Graph* myGraph = new Graph(4, { {0,1},{1,3},{1,2},{2,3},{2,0},{1,0} });
+	myGraph->print_adjacency_info();
+
+	delete myGraph;
+
+	GraphWeighted* myGraphWeighted = new GraphWeighted(4, { {0,1,2.3},{1,3,1.2},{1,2,32},{2,3,12},{2,0,2},{1,0,17} });
+	myGraphWeighted->print_adjacency_info();
+
+	delete myGraphWeighted;
+
 	return 0;
 }

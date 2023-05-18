@@ -34,10 +34,8 @@ namespace cpp_course {
 	private:
 		uint64_t height, volume;
 	public:
-		Cylinder() {
-			this->height = 0;
-			this->volume = 0;
-		}
+		// constructor delegation to the constructor that needs 2 parameters
+		Cylinder() : Cylinder(0, 0) {}
 
 		// Using initializer list
 		// use explicit to avoid implicit conversion
@@ -45,6 +43,10 @@ namespace cpp_course {
 			// The same as
 			// this->height = height etc...
 		}
+
+		// copy constructor
+		Cylinder(const Cylinder& cylinderReference)
+			: height(cylinderReference.height), volume(cylinderReference.volume) {}
 
 		bool operator==(const Cylinder& other) const {
 			return this->height == other.height && this->volume == other.volume;
